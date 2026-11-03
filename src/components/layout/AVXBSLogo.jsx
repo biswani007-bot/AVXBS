@@ -4,8 +4,8 @@ import React from 'react';
  * AVXBS Animated Logo Component
  * - Unaltered, pixel-perfect AV and XBS letter typography
  * - Continuous colorful loading animation inside the double vertical bars (||)
- * - Smooth vertical light/gradient moving from bottom to top at 0.8s per cycle
- * - 0.2s synchronized layered delay on the second bar
+ * - Smooth horizontal light/gradient moving from left to right at 2.8s per cycle (ease-in-out)
+ * - Light travels smoothly across both vertical bars with sequential masking
  * - Original brand colors (orange, coral, dark purple) strictly preserved
  * - No position/dimension scaling of the bars themselves
  * - Respects prefers-reduced-motion

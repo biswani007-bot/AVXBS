@@ -71,8 +71,14 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {/* 1. Header with Brand Logo & Right-Side Three-Dot Menu */}
-      <Header navigate={navigate} currentPath={currentPath} />
+      {/* 1. Header with Brand Logo, Mega Menus & Right-Side Three-Dot Menu */}
+      <Header 
+        navigate={navigate} 
+        currentPath={currentPath}
+        selectedType={selectedType}
+        onSelectType={setSelectedType}
+        onOpenInquiry={handleOpenInquiry}
+      />
 
       {/* Main Content Router */}
       {currentPath === '/about' ? (

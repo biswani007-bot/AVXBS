@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/logo/avxbs-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVXBS | Water Treatment & Softening Solutions</title>
+    <!-- Scroll restoration reset: guarantee page initializes at top: 0 on every refresh before layout/paint -->
+    <script>
+      (function() {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        window.addEventListener('beforeunload', function() {
+          window.scrollTo(0, 0);
+        });
+        window.addEventListener('pagehide', function() {
+          window.scrollTo(0, 0);
+        });
+      })();
+    </script>
+    <!-- Google Fonts for SamsungOne-aligned typography (Inter & Inter Tight as licensed fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+

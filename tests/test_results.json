@@ -1,0 +1,470 @@
+{
+  "timestamp": "2026-11-08T14:15:02.928Z",
+  "suites": [
+    {
+      "suiteName": "R1: Hero Slider Indicators & Controls",
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Hero banner container and progress indicators exist in DOM",
+          "passed": true,
+          "durationMs": 2,
+          "error": null
+        },
+        {
+          "name": "Indicators element is positioned INSIDE the hero banner container DOM hierarchy",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "Indicators visually overlay inside hero banner bounds without spilling into area below",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "Indicators are horizontally centered at the bottom of the hero banner",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "No white strip or document-flow block below hero banner housing indicators",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "Responsive scaling on Desktop (1440x900): indicators remain inside banner without horizontal overflow",
+          "passed": true,
+          "durationMs": 581,
+          "error": null
+        },
+        {
+          "name": "Responsive scaling on Laptop (1024x768): indicators remain inside banner without horizontal overflow",
+          "passed": true,
+          "durationMs": 602,
+          "error": null
+        },
+        {
+          "name": "Responsive scaling on Tablet (768x1024): indicators remain inside banner without horizontal overflow",
+          "passed": true,
+          "durationMs": 608,
+          "error": null
+        },
+        {
+          "name": "Responsive scaling on Mobile (375x667): indicators remain inside banner without horizontal overflow",
+          "passed": true,
+          "durationMs": 647,
+          "error": null
+        },
+        {
+          "name": "Responsive scaling on Mobile Large (430x932): indicators remain inside banner without horizontal overflow",
+          "passed": true,
+          "durationMs": 592,
+          "error": null
+        },
+        {
+          "name": "Samsung-style pause/play toggle button controls slide autoplay",
+          "passed": true,
+          "durationMs": 838,
+          "error": null
+        },
+        {
+          "name": "Clicking progress indicator button directly navigates to the selected slide",
+          "passed": true,
+          "durationMs": 515,
+          "error": null
+        }
+      ],
+      "durationMs": 7120
+    },
+    {
+      "suiteName": "R2: Navbar Residential & Commercial Button Elevation & Mega-Menus",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Residential and Commercial nav tab buttons exist in Header",
+          "passed": true,
+          "durationMs": 6,
+          "error": null
+        },
+        {
+          "name": "Residential and Commercial nav buttons have no box shadow or button-like elevation",
+          "passed": true,
+          "durationMs": 2,
+          "error": null
+        },
+        {
+          "name": "Hover state on nav buttons remains flat without box-shadow elevation",
+          "passed": true,
+          "durationMs": 432,
+          "error": null
+        },
+        {
+          "name": "Active state preserves active underline indicator",
+          "passed": true,
+          "durationMs": 2,
+          "error": null
+        },
+        {
+          "name": "Triggering Residential nav opens Residential mega-menu with solutions",
+          "passed": true,
+          "durationMs": 418,
+          "error": null
+        },
+        {
+          "name": "Triggering Commercial nav switches to Commercial mega-menu",
+          "passed": true,
+          "durationMs": 418,
+          "error": null
+        },
+        {
+          "name": "Overall navbar layout is intact with no horizontal page overflow",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        }
+      ],
+      "durationMs": 3245
+    },
+    {
+      "suiteName": "R3: Dynamic Website Logo (Admin-Controlled & Public API)",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Unauthenticated upload to /api/uploads is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 237,
+          "error": null
+        },
+        {
+          "name": "Upload of non-image file (e.g. text/plain or executable) is rejected with 400 Bad Request",
+          "passed": true,
+          "durationMs": 13,
+          "error": null
+        },
+        {
+          "name": "Upload of oversized file (> 5MB server limit) is rejected with 400 Bad Request",
+          "passed": true,
+          "durationMs": 33,
+          "error": null
+        },
+        {
+          "name": "Valid image upload succeeds and returns public file URL",
+          "passed": true,
+          "durationMs": 216,
+          "error": null
+        },
+        {
+          "name": "Logo configuration persists in SiteSetting with key website_logo",
+          "passed": true,
+          "durationMs": 375,
+          "error": null
+        },
+        {
+          "name": "Public frontend loads logo dynamically via API or falls back cleanly with zero console errors",
+          "passed": true,
+          "durationMs": 1926,
+          "error": null
+        }
+      ],
+      "durationMs": 4285
+    },
+    {
+      "suiteName": "R4: Secondary Banner Section Below Tap Water",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Secondary banner configuration persists in SiteSetting with key secondary_banner",
+          "passed": true,
+          "durationMs": 362,
+          "error": null
+        },
+        {
+          "name": "Existing Tap Water image section exists and is unmodified",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "Secondary banner is placed immediately below the Tap Water section in DOM",
+          "passed": true,
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "name": "Secondary banner height is approximately 80% (70%-95%) of Hero banner height",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "Secondary banner scales responsively on Desktop (1440x900) without horizontal page overflow",
+          "passed": true,
+          "durationMs": 586,
+          "error": null
+        },
+        {
+          "name": "Secondary banner scales responsively on Laptop (1024x768) without horizontal page overflow",
+          "passed": true,
+          "durationMs": 601,
+          "error": null
+        },
+        {
+          "name": "Secondary banner scales responsively on Tablet (768x1024) without horizontal page overflow",
+          "passed": true,
+          "durationMs": 579,
+          "error": null
+        },
+        {
+          "name": "Secondary banner scales responsively on Mobile (375x667) without horizontal page overflow",
+          "passed": true,
+          "durationMs": 686,
+          "error": null
+        },
+        {
+          "name": "Secondary banner scales responsively on Mobile Large (430x932) without horizontal page overflow",
+          "passed": true,
+          "durationMs": 588,
+          "error": null
+        }
+      ],
+      "durationMs": 5815
+    },
+    {
+      "suiteName": "R5: Public Customer Voice Form Removal",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Existing customer reviews in database are preserved and intact",
+          "passed": true,
+          "durationMs": 161,
+          "error": null
+        },
+        {
+          "name": "Public Customer Voice submission form is completely removed from DOM",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        },
+        {
+          "name": "No navigation links or buttons point to Customer Voice review submission form",
+          "passed": true,
+          "durationMs": 0,
+          "error": null
+        },
+        {
+          "name": "Reviews display section (Testimonials) remains functional and renders existing reviews",
+          "passed": true,
+          "durationMs": 1,
+          "error": null
+        }
+      ],
+      "durationMs": 2105
+    },
+    {
+      "suiteName": "R6: Admin-Controlled Review Management & Active Filtering",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Admin can manually add a new review with all required fields",
+          "passed": true,
+          "durationMs": 230,
+          "error": null
+        },
+        {
+          "name": "Admin review list (?all=true) includes newly added review",
+          "passed": true,
+          "durationMs": 627,
+          "error": null
+        },
+        {
+          "name": "Public API (GET /api/testimonials) returns the active review",
+          "passed": true,
+          "durationMs": 269,
+          "error": null
+        },
+        {
+          "name": "Admin can toggle review status to Inactive (isActive: false)",
+          "passed": true,
+          "durationMs": 312,
+          "error": null
+        },
+        {
+          "name": "Public API strictly excludes reviews with isActive: false",
+          "passed": true,
+          "durationMs": 297,
+          "error": null
+        },
+        {
+          "name": "Admin can edit review content and toggle status back to Active",
+          "passed": true,
+          "durationMs": 378,
+          "error": null
+        },
+        {
+          "name": "Admin can delete a review",
+          "passed": true,
+          "durationMs": 377,
+          "error": null
+        }
+      ],
+      "durationMs": 2884
+    },
+    {
+      "suiteName": "R7: Backend Security, Upload Validation & Anti-Mock Integrity",
+      "total": 21,
+      "passed": 21,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "Unauthenticated POST /api/uploads is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 13,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated POST /api/settings is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 11,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/settings is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 9,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/testimonials/6aec3ff0650bd7c475b49c58 is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 14,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated DELETE /api/testimonials/6aec3ff0650bd7c475b49c58 is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 11,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/inquiry-section is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 12,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/footer-config is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 14,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/about-config is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 194,
+          "error": null
+        },
+        {
+          "name": "Unauthenticated PUT /api/contact-config is rejected with 401 Unauthorized",
+          "passed": true,
+          "durationMs": 136,
+          "error": null
+        },
+        {
+          "name": "Public GET /api/testimonials responds with 200 without authentication",
+          "passed": true,
+          "durationMs": 308,
+          "error": null
+        },
+        {
+          "name": "Public GET /api/settings responds with 200 without authentication",
+          "passed": true,
+          "durationMs": 249,
+          "error": null
+        },
+        {
+          "name": "Public GET /api/hero-slides responds with 200 without authentication",
+          "passed": true,
+          "durationMs": 399,
+          "error": null
+        },
+        {
+          "name": "Public GET /api/products responds with 200 without authentication",
+          "passed": true,
+          "durationMs": 100,
+          "error": null
+        },
+        {
+          "name": "Server rejects dangerous file upload (shell.php) with 400 Bad Request",
+          "passed": true,
+          "durationMs": 14,
+          "error": null
+        },
+        {
+          "name": "Server rejects dangerous file upload (payload.exe) with 400 Bad Request",
+          "passed": true,
+          "durationMs": 10,
+          "error": null
+        },
+        {
+          "name": "Server rejects dangerous file upload (script.sh) with 400 Bad Request",
+          "passed": true,
+          "durationMs": 9,
+          "error": null
+        },
+        {
+          "name": "Server rejects dangerous file upload (page.html) with 400 Bad Request",
+          "passed": true,
+          "durationMs": 10,
+          "error": null
+        },
+        {
+          "name": "Server rejects review creation with invalid rating (<1 or >5)",
+          "passed": true,
+          "durationMs": 9,
+          "error": null
+        },
+        {
+          "name": "Server rejects review creation with missing feedback",
+          "passed": true,
+          "durationMs": 10,
+          "error": null
+        },
+        {
+          "name": "Public endpoints return real persistent database records, not static mock arrays",
+          "passed": true,
+          "durationMs": 471,
+          "error": null
+        },
+        {
+          "name": "Review inputs withstand XSS injection payloads without crashing or unsafe execution",
+          "passed": true,
+          "durationMs": 471,
+          "error": null
+        }
+      ],
+      "durationMs": 2922
+    }
+  ],
+  "totals": {
+    "total": 66,
+    "passed": 66,
+    "failed": 0,
+    "durationMs": 36842
+  }
+}

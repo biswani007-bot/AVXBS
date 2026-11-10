@@ -3846,7 +3846,7 @@ button, input, select, textarea, optgroup {
   }
 }
 
-@media (max-width: 860px) and (min-width: 641px) {
+@media (min-width: 768px) and (max-width: 860px) {
   .footer-inner-container,
   .footer-main-container {
     padding: 0 24px;
@@ -3902,25 +3902,49 @@ button, input, select, textarea, optgroup {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767.98px) {
   .footer-inner-container,
   .footer-main-container {
     padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
+  /* 1. Mobile Footer Intro Section: Content-driven height, zero fixed heights, no empty gaps */
   .footer-section-intro {
-    padding: 20px 0 18px;
+    padding: 16px 0 14px;
+    height: auto;
+    min-height: 0;
   }
 
   .footer-brand-section {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .footer-brand-left {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .footer-logo-wrap {
+    margin-bottom: 8px;
+    height: auto;
+    min-height: 0;
   }
 
   .footer-logo-img,
   .footer-logo-img.avxbs-animated-logo-root {
-    height: 30px;
+    height: 28px;
     min-height: 0;
     max-height: 32px;
   }
@@ -3928,16 +3952,41 @@ button, input, select, textarea, optgroup {
   .footer-company-desc {
     font-size: 0.84rem;
     line-height: 1.5;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .footer-brand-right {
+    flex: none;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0;
+    margin-top: 0;
+    height: auto;
+    min-height: 0;
   }
 
   .partner-tag {
     font-size: 0.78rem;
-    padding: 5px 14px;
+    padding: 4px 12px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  /* 2. Compact, evenly spaced navigation accordion */
+  .footer-section-nav {
+    padding: 0;
+    height: auto;
+    min-height: 0;
   }
 
   .footer-nav-grid,
   .footer-directory-grid {
     grid-template-columns: 1fr;
+    height: auto;
+    min-height: 0;
   }
 
   .desktop-only-title {
@@ -3950,6 +3999,8 @@ button, input, select, textarea, optgroup {
     padding: 0;
     border-right: none;
     border-bottom: 1px solid #D9DDE3;
+    height: auto;
+    min-height: 0;
   }
 
   .footer-dir-col:last-child {
@@ -3961,19 +4012,21 @@ button, input, select, textarea, optgroup {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 14px 0;
+    padding: 12px 0;
     background: transparent;
     border: none;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: #111827;
     cursor: pointer;
     text-align: left;
+    min-height: 44px;
+    box-sizing: border-box;
   }
 
   .footer-links-list {
     display: none;
-    padding: 4px 0 16px 4px;
+    padding: 2px 0 14px 4px;
     gap: 10px;
   }
 
@@ -3981,39 +4034,55 @@ button, input, select, textarea, optgroup {
     display: flex;
   }
 
+  .footer-nav-link {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  /* 3. Copyright and legal section immediately following navigation */
   .footer-section-legal {
-    padding: 18px 0 16px;
+    padding: 14px 0 12px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .footer-legal-content {
+    gap: 6px;
   }
 
   .footer-copyright-statement {
-    font-size: 0.82rem;
+    font-size: 0.80rem;
+    line-height: 1.45;
   }
 
   .footer-legal-disclaimer {
-    font-size: 0.78rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    line-height: 1.45;
   }
 
   .footer-corporate-info {
-    font-size: 0.78rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    line-height: 1.45;
   }
 
+  /* 4. Bottom footer bar with floating chat widget clearance */
   .footer-section-bottom,
   .footer-bottom-bar-wrapper {
-    padding: 16px 0 32px;
+    padding: 14px 0 84px;
+    height: auto;
+    min-height: 0;
   }
 
   .footer-bottom-bar-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
   }
 
   .footer-bottom-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
   }
 
@@ -4027,21 +4096,30 @@ button, input, select, textarea, optgroup {
 
   .footer-bottom-nav {
     flex-wrap: wrap;
-    gap: 6px 14px;
+    gap: 6px 12px;
+  }
+
+  .footer-bottom-nav-link,
+  .footer-locale-btn {
+    font-size: 0.80rem;
   }
 
   .footer-bottom-right {
     margin-right: 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
-    padding-top: 12px;
+    padding-top: 10px;
     border-top: 1px solid #D9DDE3;
   }
 
+  .stay-in-loop-text {
+    font-size: 0.80rem;
+  }
+
   .footer-bottom-social-icons {
-    gap: 12px;
+    gap: 10px;
   }
 }
 

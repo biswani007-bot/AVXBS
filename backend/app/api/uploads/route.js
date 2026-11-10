@@ -106,7 +106,7 @@ export async function POST(req) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Ensure uploads directory exists in public
+    // Ensure primary uploads directory exists
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
     await mkdir(uploadsDir, { recursive: true });
 
@@ -119,7 +119,32 @@ export async function POST(req) {
     const uniqueFileName = `${baseName}_${Date.now()}${ext}`;
     const filePath = path.join(uploadsDir, uniqueFileName);
 
-    await writeFile(filePath, buffer);
+    // Write file with explicit world-readable permissions (0o644) so Apache/Nginx can read it
+    await writeFile(filePath, buffer, { mode: 0o644 });
+
+    // Sync to secondary candidate paths if they exist on the server (e.g., aaPanel root vs subfolder)
+    const secondaryDirs = new Set([
+      path.join(process.cwd(), 'backend', 'public', 'uploads'),
+      path.join(process.cwd(), '..', 'public', 'uploads'),
+      path.join(process.cwd(), '..', 'backend', 'public', 'uploads'),
+      path.join(process.cwd(), 'uploads'),
+      path.join(process.cwd(), '..', 'uploads'),
+    ]);
+
+    if (process.platform === 'linux') {
+      secondaryDirs.add('/www/wwwroot/avxadmin.visital.in/public/uploads');
+      secondaryDirs.add('/www/wwwroot/avxadmin.visital.in/backend/public/uploads');
+      secondaryDirs.add('/www/wwwroot/avxadmin.visital.in/uploads');
+    }
+
+    for (const secDir of secondaryDirs) {
+      if (secDir !== uploadsDir) {
+        try {
+          await mkdir(secDir, { recursive: true });
+          await writeFile(path.join(secDir, uniqueFileName), buffer, { mode: 0o644 });
+        } catch {}
+      }
+    }
 
     const fileUrl = `/uploads/${uniqueFileName}`;
 

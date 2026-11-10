@@ -66,7 +66,7 @@ const DEFAULT_FOOTER_DATA = {
     helpline: '[Toll-Free / Support Phone - To Be Provided]',
     email: '[Official Support Email - To Be Provided]',
     badgeText: 'Engineering Pure Water for Homes & Enterprises',
-    regionText: 'India / English',
+    regionText: 'India | English',
     copyrightText: '© 2026 AVXBS Solutions. All Rights Reserved.',
   },
   columns: [
@@ -125,10 +125,9 @@ const DEFAULT_FOOTER_DATA = {
 
 // Verified Bottom Footer Navigation Links
 const BOTTOM_LEGAL_LINKS = [
-  { label: 'Privacy', url: '#privacy' },
-  { label: 'Legal', url: '#legal' },
-  { label: 'CSR Policy', url: '#csr-policy' },
-  { label: 'Sitemap', url: '#sitemap' },
+  { label: 'Privacy Policy', url: '#privacy' },
+  { label: 'Terms of Service', url: '#terms' },
+  { label: 'Warranty & Service Policy', url: '#warranty' },
 ];
 
 // Verified Social Media Icons Mapping
@@ -144,12 +143,10 @@ const SOCIAL_ICON_COMPONENTS = {
 };
 
 const DEFAULT_SOCIAL_LIST = [
-  { platform: 'Facebook', url: '#social-facebook', isActive: true },
-  { platform: 'X (Twitter)', url: '#social-x', isActive: true },
-  { platform: 'Instagram', url: '#social-instagram', isActive: true },
-  { platform: 'YouTube', url: '#social-youtube', isActive: true },
-  { platform: 'LinkedIn', url: '#social-linkedin', isActive: true },
-  { platform: 'WhatsApp', url: '#social-whatsapp', isActive: true },
+  { platform: 'LinkedIn', url: '#social-linkedin-placeholder', label: 'LinkedIn', isActive: true },
+  { platform: 'Instagram', url: '#social-instagram-placeholder', label: 'Instagram', isActive: true },
+  { platform: 'YouTube', url: '#social-youtube-placeholder', label: 'YouTube', isActive: true },
+  { platform: 'X (Twitter)', url: '#social-twitter-placeholder', label: 'X (Twitter)', isActive: true },
 ];
 
 /**
@@ -201,114 +198,144 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="footer-main-container">
-        {/* Tier 1: Top Brand Intro & Tagline Bar */}
-        <div className="footer-brand-section">
-          <div className="footer-brand-left">
-            <div className="footer-logo-wrap">
-              <AVXBSLogo className="footer-logo-img" animated={true} />
+      {/* Section A – Company Introduction */}
+      <div className="footer-section footer-section-intro">
+        <div className="footer-inner-container">
+          <div className="footer-brand-section">
+            <div className="footer-brand-left">
+              <div className="footer-logo-wrap">
+                <AVXBSLogo className="footer-logo-img" animated={true} />
+              </div>
+              <p className="footer-company-desc">
+                {companyInfo?.description || DEFAULT_FOOTER_DATA.companyInfo.description}
+              </p>
             </div>
-            <p className="footer-company-desc">
-              {companyInfo?.description || DEFAULT_FOOTER_DATA.companyInfo.description}
-            </p>
+            <div className="footer-brand-right">
+              <div className="partner-tag">
+                {companyInfo?.badgeText || companyInfo?.tagline || DEFAULT_FOOTER_DATA.companyInfo.badgeText}
+              </div>
+            </div>
           </div>
-          <div className="footer-brand-right">
-            <div className="partner-tag">
-              {companyInfo?.badgeText || DEFAULT_FOOTER_DATA.companyInfo.badgeText}
-            </div>
-          </div>
-        </div>
-
-        {/* Divider line */}
-        <div className="footer-section-divider" aria-hidden="true" />
-
-        {/* Tier 2: Multi-Column Directory Grid (Solutions, Products, Support, Company) */}
-        <div className="footer-directory-grid">
-          {activeColumns.map((col, idx) => (
-            <div key={col._id || idx} className="footer-dir-col">
-              {/* Desktop Column Header */}
-              <h4 className="footer-col-title desktop-only-title">{col.title}</h4>
-
-              {/* Mobile Collapsible Header */}
-              <button
-                type="button"
-                className="footer-mobile-col-btn mobile-only-toggle"
-                onClick={() => toggleMobileCol(idx)}
-                aria-expanded={!!openMobileCols[idx]}
-              >
-                <span>{col.title}</span>
-                {openMobileCols[idx] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-              </button>
-
-              {/* Links List */}
-              <ul className={`footer-links-list ${openMobileCols[idx] ? 'is-expanded' : ''}`}>
-                {col.links?.filter((l) => l.isActive !== false).map((link, lIdx) => (
-                  <li key={link._id || lIdx} className="footer-link-item">
-                    <a
-                      href={link.url}
-                      className="footer-nav-link"
-                      target={link.isExternal || (link.url && link.url.startsWith('http')) ? '_blank' : '_self'}
-                      rel={link.isExternal || (link.url && link.url.startsWith('http')) ? 'noopener noreferrer' : undefined}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* Tier 3: Bottom Footer Bar (Full Viewport Width Matching Samsung Screenshot Reference) */}
-      <div className="footer-bottom-bar-wrapper">
-        <div className="footer-bottom-bar-inner">
-          {/* Left Side: India / English | Privacy | Legal | CSR Policy | Sitemap */}
-          <div className="footer-bottom-left">
-            <button type="button" className="footer-locale-btn" aria-label="Select Region and Language">
-              <span>{companyInfo?.regionText || 'India / English'}</span>
-            </button>
-            <span className="footer-bar-vdivider" aria-hidden="true">|</span>
-            <nav className="footer-bottom-nav" aria-label="Footer Legal Links">
-              {activeLegalLinks.map((item, idx) => (
-                <React.Fragment key={idx}>
-                  {idx > 0 && <span className="footer-bar-vdivider" aria-hidden="true">|</span>}
-                  <a href={item.url} className="footer-bottom-nav-link">
-                    {item.label}
-                  </a>
-                </React.Fragment>
-              ))}
-            </nav>
-            {companyInfo?.copyrightText && (
-              <>
-                <span className="footer-bar-vdivider" aria-hidden="true">|</span>
-                <span className="footer-copyright-text" style={{ fontSize: '0.74rem', color: '#64748b' }}>
-                  {companyInfo.copyrightText}
-                </span>
-              </>
+      {/* Section B – Navigation Columns (with full-height vertical dividers) */}
+      <div className="footer-section footer-section-nav">
+        <div className="footer-inner-container">
+          <div
+            className="footer-nav-grid footer-directory-grid"
+            style={{ '--footer-col-count': activeColumns.length }}
+          >
+            {activeColumns.map((col, idx) => (
+              <div key={col._id || idx} className="footer-dir-col">
+                {/* Desktop Column Header */}
+                <h4 className="footer-col-title desktop-only-title">{col.title}</h4>
+
+                {/* Mobile Collapsible Header */}
+                <button
+                  type="button"
+                  className="footer-mobile-col-btn mobile-only-toggle"
+                  onClick={() => toggleMobileCol(idx)}
+                  aria-expanded={!!openMobileCols[idx]}
+                >
+                  <span>{col.title}</span>
+                  {openMobileCols[idx] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </button>
+
+                {/* Links List */}
+                <ul className={`footer-links-list ${openMobileCols[idx] ? 'is-expanded' : ''}`}>
+                  {col.links?.filter((l) => l.isActive !== false).map((link, lIdx) => (
+                    <li key={link._id || lIdx} className="footer-link-item">
+                      <a
+                        href={link.url}
+                        className="footer-nav-link"
+                        target={link.isExternal || (link.url && link.url.startsWith('http')) ? '_blank' : '_self'}
+                        rel={link.isExternal || (link.url && link.url.startsWith('http')) ? 'noopener noreferrer' : undefined}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Section C – Copyright and Legal Information */}
+      <div className="footer-section footer-section-legal">
+        <div className="footer-inner-container">
+          <div className="footer-legal-content">
+            <p className="footer-copyright-statement">
+              {companyInfo?.copyrightText || DEFAULT_FOOTER_DATA.companyInfo.copyrightText}
+            </p>
+            <p className="footer-legal-disclaimer">
+              AVXBS is committed to delivering advanced water treatment and softening solutions engineered for residential and commercial infrastructures. Please dispose of filtration consumables and water treatment systems responsibly in accordance with local environmental regulations. For service guidelines and compliance frameworks, please review our{' '}
+              <a href="#warranty" className="footer-legal-inline-link">Warranty &amp; Service Policy</a> or{' '}
+              <a href="#privacy" className="footer-legal-inline-link">Privacy Policy</a>.
+            </p>
+            {companyInfo?.headquarters && !companyInfo.headquarters.includes('[Official') && (
+              <p className="footer-corporate-info">
+                <span>Registered Office: {companyInfo.headquarters}</span>
+                {companyInfo?.helpline && !companyInfo.helpline.includes('[Toll-Free') && (
+                  <span> &bull; Helpline: {companyInfo.helpline}</span>
+                )}
+                {companyInfo?.email && !companyInfo.email.includes('[Official') && (
+                  <span> &bull; Email: {companyInfo.email}</span>
+                )}
+              </p>
             )}
           </div>
+        </div>
+      </div>
 
-          {/* Right Side: Stay in the Loop? | Facebook | X | Instagram | YouTube | LinkedIn | WhatsApp */}
-          <div className="footer-bottom-right">
-            <span className="stay-in-loop-text">Stay in the Loop?</span>
-            <div className="footer-bottom-social-icons">
-              {activeSocialLinks.map((social, idx) => {
-                const IconComponent = SOCIAL_ICON_COMPONENTS[social.platform] || SOCIAL_ICON_COMPONENTS['LinkedIn'] || FacebookIcon;
-                return (
-                  <a
-                    key={idx}
-                    href={social.url}
-                    className="footer-social-icon-btn"
-                    aria-label={`${social.platform} - AVXBS Official`}
-                    title={social.platform}
-                    target={social.url && social.url.startsWith('http') ? '_blank' : '_self'}
-                    rel={social.url && social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    <IconComponent size={16} />
-                  </a>
-                );
-              })}
+      {/* Section D – Bottom Footer Bar */}
+      <div className="footer-section footer-section-bottom footer-bottom-bar-wrapper">
+        <div className="footer-inner-container">
+          <div className="footer-bottom-bar-inner">
+            {/* Left side: Country/language selector and legal links */}
+            <div className="footer-bottom-left">
+              <button type="button" className="footer-locale-btn" aria-label="Select Region and Language">
+                <span>{companyInfo?.regionText || 'India / English'}</span>
+              </button>
+              <span className="footer-bar-vdivider" aria-hidden="true">|</span>
+              <nav className="footer-bottom-nav" aria-label="Footer Legal Links">
+                {activeLegalLinks.map((item, idx) => (
+                  <React.Fragment key={item._id || idx}>
+                    {idx > 0 && <span className="footer-bar-vdivider" aria-hidden="true">|</span>}
+                    <a href={item.url} className="footer-bottom-nav-link">
+                      {item.label}
+                    </a>
+                  </React.Fragment>
+                ))}
+              </nav>
+            </div>
+
+            {/* Right side: Stay in the Loop? and social media icons */}
+            <div className="footer-bottom-right">
+              <span className="stay-in-loop-text">Stay in the Loop?</span>
+              <div className="footer-bottom-social-icons">
+                {activeSocialLinks.map((social, idx) => {
+                  const IconComponent =
+                    SOCIAL_ICON_COMPONENTS[social.platform] ||
+                    SOCIAL_ICON_COMPONENTS['LinkedIn'] ||
+                    FacebookIcon;
+                  return (
+                    <a
+                      key={social._id || idx}
+                      href={social.url}
+                      className="footer-social-icon-btn"
+                      aria-label={`${social.platform} - AVXBS Official`}
+                      title={social.platform}
+                      target={social.url && social.url.startsWith('http') ? '_blank' : '_self'}
+                      rel={social.url && social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    >
+                      <IconComponent size={18} />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -245,18 +245,18 @@ button, input, select, textarea, optgroup {
 /* Primary Simple Navigation: Samsung Benchmark */
 .header-primary-nav {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 10px;
   height: 100%;
   margin: 0;
-  padding: 0;
-  transform: translateY(3px); /* Move navigation items slightly lower within navbar, aligned with enlarged logo */
+  padding: 0 0 13px 0;
+  box-sizing: border-box;
 }
 
 .nav-item-wrapper {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -282,7 +282,6 @@ button, input, select, textarea, optgroup {
   text-decoration: none;
   line-height: 1;
   margin: 0;
-  transform: translateY(4px); /* Shifted 4px downward */
 }
 
 .samsung-nav-tab-btn:hover {
@@ -314,7 +313,7 @@ button, input, select, textarea, optgroup {
 
 .nav-tab-indicator {
   position: absolute;
-  bottom: -18.25px; /* Sits cleanly above the 94px header bottom border */
+  bottom: 0px;
   left: 14px;
   right: 14px;
   height: 3px;
@@ -1672,19 +1671,19 @@ button, input, select, textarea, optgroup {
 }
 
 .footer-logo-img.avxbs-dynamic-logo {
-  height: 42px;
+  height: 32px;
   min-height: 0;
-  max-height: 48px;
+  max-height: 36px;
   width: auto;
-  max-width: 200px;
+  max-width: 160px;
 }
 
 .footer-logo-img .avxbs-dynamic-logo-img,
 .footer-logo-img .avxbs-dynamic-logo-video {
-  height: 42px;
-  max-height: 48px;
+  height: 32px;
+  max-height: 36px;
   width: auto;
-  max-width: 200px;
+  max-width: 160px;
 }
 
 .nav-drawer-logo.avxbs-dynamic-logo {
@@ -2631,10 +2630,11 @@ button, input, select, textarea, optgroup {
 }
 
 .solution-slider-card {
+  --slider-panel-width: 168px;
   width: 100%;
   max-width: 960px;
-  height: 380px;
-  min-height: 380px;
+  height: 304px;
+  min-height: 304px;
   background: linear-gradient(155deg, #484848 0%, #3d3d3d 100%);
   border-radius: 40px;
   position: relative;
@@ -2693,7 +2693,7 @@ button, input, select, textarea, optgroup {
 
 .slider-card-content-area {
   display: grid;
-  grid-template-columns: 14% 73% 13%;
+  grid-template-columns: var(--slider-panel-width, 168px) 1fr var(--slider-panel-width, 168px);
   align-items: stretch;
   width: 100%;
   height: 100%;
@@ -2732,19 +2732,20 @@ button, input, select, textarea, optgroup {
   z-index: 10;
 }
 
-/* Left Section: Displays "CURRENT USER ACCESS" on one clean line & number centered (~14% width) */
+/* Left Section: Displays "CURRENT USER ACCESS" in top-left corner & number centered in left panel */
 .slider-left-column {
+  position: relative;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
   height: 100%;
   box-sizing: border-box;
-  padding: 16px 8px;
+  padding: 22px 14px 16px 22px;
 }
 
 .solution-slider-card.is-card-expanded .slider-left-column {
@@ -2758,31 +2759,45 @@ button, input, select, textarea, optgroup {
 .counter-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   min-width: 0;
 }
 
 .counter-label {
   font-family: var(--font-condensed);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1vw, 0.65rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   color: #D1D5DB;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
   line-height: 1.2;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Number wrapper centered vertically & horizontally across the left grey panel */
+.counter-number-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .counter-number {
   font-family: var(--font-condensed);
-  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-size: clamp(2.4rem, 3.5vw, 3.2rem);
   font-weight: 800;
   color: #FFFFFF;
   line-height: 1;
@@ -3453,12 +3468,12 @@ button, input, select, textarea, optgroup {
 }
 
 /* ==========================================================================
-   7. Premium Corporate Multi-Column Footer (Samsung-Inspired Directory Layout)
+   7. Premium Corporate Multi-Column Footer (Samsung Benchmark Divider System)
    ========================================================================== */
 .site-footer {
   background-color: #FAFAFB;
-  border-top: 1px solid #E5E7EB;
-  padding: 56px 32px 48px;
+  border-top: 1px solid #D9DDE3;
+  padding: 0;
   margin-top: auto;
   color: #374151;
   font-family: var(--font-primary);
@@ -3473,20 +3488,34 @@ button, input, select, textarea, optgroup {
   margin-top: var(--homepage-section-gap, 19px);
 }
 
+/* Full-Width Section Wrapper with Clean Subtle Horizontal Borders */
+.footer-section {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #D9DDE3;
+}
+
+.footer-inner-container,
 .footer-main-container {
   width: 100%;
-  max-width: 1360px;
+  max-width: 100%;
   margin: 0 auto;
+  padding: 0 clamp(24px, 3.5vw, 60px);
   box-sizing: border-box;
 }
 
-/* Tier 1: Brand Info & Tagline */
+/* --------------------------------------------------------------------------
+   Section A – Company Introduction
+   -------------------------------------------------------------------------- */
+.footer-section-intro {
+  padding: 28px 0 24px;
+}
+
 .footer-brand-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 36px;
-  margin-bottom: 24px;
+  gap: 32px;
   flex-wrap: wrap;
   width: 100%;
   max-width: 100%;
@@ -3494,22 +3523,27 @@ button, input, select, textarea, optgroup {
 }
 
 .footer-brand-left {
-  max-width: 720px;
+  max-width: 1100px;
+  flex: 1 1 560px;
 }
 
 .footer-logo-wrap {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
-.footer-logo-img {
-  height: 42px;
+.footer-logo-img,
+.footer-logo-img.avxbs-animated-logo-root {
+  height: 34px;
+  min-height: 0;
+  max-height: 38px;
   width: auto;
+  aspect-ratio: 1006 / 397;
 }
 
 .footer-company-desc {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   color: #4B5563;
-  line-height: 1.65;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -3517,50 +3551,62 @@ button, input, select, textarea, optgroup {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  padding-top: 4px;
 }
 
 .partner-tag {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #1E3A8A;
   background: rgba(0, 112, 186, 0.08);
   border: 1px solid rgba(0, 112, 186, 0.16);
-  padding: 8px 16px;
+  padding: 6px 16px;
   border-radius: 9999px;
   display: inline-block;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
-/* Subtle Hairline Dividers */
-.footer-section-divider {
-  width: 100%;
-  height: 1px;
-  background-color: #E5E7EB;
-  margin: 28px 0;
+/* --------------------------------------------------------------------------
+   Section B – Navigation Columns (with full-height vertical dividers)
+   -------------------------------------------------------------------------- */
+.footer-section-nav {
+  padding: 0;
 }
 
-/* Tier 2: Multi-Column Directory Grid */
+.footer-nav-grid,
 .footer-directory-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px;
-  align-items: start;
+  grid-template-columns: repeat(var(--footer-col-count, 4), 1fr);
   width: 100%;
-  max-width: 100%;
+  align-items: stretch;
   box-sizing: border-box;
 }
 
 .footer-dir-col {
   display: flex;
   flex-direction: column;
+  padding: 30px 28px;
+  border-right: 1px solid #D9DDE3;
   min-width: 0;
   box-sizing: border-box;
 }
 
+.footer-dir-col:first-child {
+  padding-left: 0;
+  padding-right: 28px;
+}
+
+.footer-dir-col:last-child {
+  border-right: none;
+  padding-right: 0;
+  padding-left: 28px;
+}
+
 .footer-col-title {
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: #111827;
+  color: #0F172A;
   margin: 0 0 16px;
   letter-spacing: -0.01em;
   text-transform: capitalize;
@@ -3577,7 +3623,7 @@ button, input, select, textarea, optgroup {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .footer-link-item {
@@ -3588,100 +3634,88 @@ button, input, select, textarea, optgroup {
 .footer-nav-link {
   color: #4B5563;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.4;
-  transition: color 0.18s ease, transform 0.18s ease;
+  line-height: 1.5;
+  transition: color 0.18s ease;
   display: inline-block;
 }
 
 .footer-nav-link:hover {
   color: #0070BA;
-  transform: translateX(2px);
 }
 
-/* Social Media Pill Group */
-.col-social-connect {
-  min-width: 0;
+/* --------------------------------------------------------------------------
+   Section C – Copyright and Legal Information
+   -------------------------------------------------------------------------- */
+.footer-section-legal {
+  padding: 22px 0 20px;
 }
 
-.footer-social-pill-group {
+.footer-legal-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
-  margin-bottom: 20px;
 }
 
-.social-btn {
+.footer-copyright-statement {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footer-legal-disclaimer {
   font-size: 0.80rem;
-  font-weight: 500;
-  color: #374151;
-  background: #FFFFFF;
-  border: 1px solid #D1D5DB;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  display: inline-flex;
-  align-items: center;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 100%;
 }
 
-.social-btn:hover {
-  border-color: #0070BA;
+.footer-legal-inline-link {
   color: #0070BA;
-  background: #F0F9FF;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 112, 186, 0.12);
+  text-decoration: underline;
+  transition: color 0.15s ease;
 }
 
-.footer-regional-selector {
-  margin-top: 4px;
+.footer-legal-inline-link:hover {
+  color: #005a96;
 }
 
-.regional-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #4B5563;
-  background: #FFFFFF;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  border: 1px solid #D1D5DB;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+.footer-corporate-info {
+  font-size: 0.80rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* Tier 3: Bottom Footer Bar (Single Horizontal Row Spanning Browser Width) */
+/* --------------------------------------------------------------------------
+   Section D – Bottom Footer Bar
+   -------------------------------------------------------------------------- */
+.footer-section-bottom,
 .footer-bottom-bar-wrapper {
-  width: 100%;
-  margin-top: 36px;
-  border-top: 1px solid #E5E7EB;
-  padding: 18px 32px 32px;
-  background-color: #FAFAFB;
-  box-sizing: border-box;
+  padding: 18px 0 20px;
+  border-bottom: none;
 }
 
 .footer-bottom-bar-inner {
-  max-width: 1360px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
+  width: 100%;
   flex-wrap: nowrap;
 }
 
-/* Left Side: India / English | Privacy | Legal | CSR Policy | Sitemap */
 .footer-bottom-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-shrink: 0;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: #111827;
-  font-weight: 500;
 }
 
 .footer-locale-btn {
@@ -3691,7 +3725,7 @@ button, input, select, textarea, optgroup {
   margin: 0;
   color: #111827;
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   letter-spacing: -0.01em;
@@ -3706,21 +3740,21 @@ button, input, select, textarea, optgroup {
 .footer-bar-vdivider {
   color: #9CA3AF;
   font-weight: 300;
-  font-size: 0.80rem;
+  font-size: 0.84rem;
   user-select: none;
 }
 
 .footer-bottom-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   white-space: nowrap;
 }
 
 .footer-bottom-nav-link {
-  color: #111827;
+  color: #374151;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   font-weight: 500;
   transition: color 0.15s ease;
   white-space: nowrap;
@@ -3731,16 +3765,16 @@ button, input, select, textarea, optgroup {
   text-decoration: underline;
 }
 
-/* Right Side: Stay in the Loop? | Facebook | X | Instagram | YouTube | LinkedIn | WhatsApp */
 .footer-bottom-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   flex-shrink: 0;
+  margin-right: 0;
 }
 
 .stay-in-loop-text {
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #111827;
   white-space: nowrap;
@@ -3750,21 +3784,21 @@ button, input, select, textarea, optgroup {
 .footer-bottom-social-icons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-social-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  color: #000000;
+  color: #111827;
   background: transparent;
   text-decoration: none;
   transition: transform 0.18s ease, color 0.18s ease, opacity 0.18s ease;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .footer-social-icon-btn:hover {
@@ -3773,41 +3807,153 @@ button, input, select, textarea, optgroup {
   transform: translateY(-2px) scale(1.1);
 }
 
-/* ==========================================================================
-   Footer Responsive Breakpoints (Tablet & Mobile)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .site-footer {
-    padding: 44px 20px 84px; /* Extra bottom clearance so floating widget doesn't block */
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints (Desktop, Laptop, Tablet & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) and (min-width: 861px) {
+  .footer-dir-col {
+    padding: 24px 18px;
   }
 
-  .footer-directory-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 24px;
+  .footer-dir-col:first-child {
+    padding-left: 0;
+    padding-right: 18px;
+  }
+
+  .footer-dir-col:last-child {
+    padding-right: 0;
+    padding-left: 18px;
   }
 
   .footer-bottom-bar-inner {
     flex-wrap: wrap;
     gap: 16px;
-    justify-content: space-between;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .footer-inner-container,
+  .footer-main-container {
+    padding: 0 clamp(20px, 3vw, 32px);
+  }
+
+  .footer-section-intro {
+    padding: 22px 0 20px;
+  }
+
+  .footer-bottom-right {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 860px) and (min-width: 641px) {
+  .footer-inner-container,
+  .footer-main-container {
+    padding: 0 24px;
+  }
+
+  .footer-section-intro {
+    padding: 22px 0 20px;
+  }
+
+  .footer-nav-grid,
+  .footer-directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-dir-col {
+    padding: 22px 20px;
+    border-right: 1px solid #D9DDE3;
+    border-bottom: 1px solid #D9DDE3;
+  }
+
+  .footer-dir-col:nth-child(2n) {
+    border-right: none;
+    padding-right: 0;
+    padding-left: 20px;
+  }
+
+  .footer-dir-col:nth-child(2n + 1) {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  .footer-dir-col:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  .footer-section-legal {
+    padding: 18px 0 16px;
+  }
+
+  .footer-section-bottom,
+  .footer-bottom-bar-wrapper {
+    padding: 16px 0 24px;
+  }
+
+  .footer-bottom-bar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-bottom-right {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-inner-container,
+  .footer-main-container {
+    padding: 0 16px;
+  }
+
+  .footer-section-intro {
+    padding: 20px 0 18px;
+  }
+
   .footer-brand-section {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
 
+  .footer-logo-img,
+  .footer-logo-img.avxbs-animated-logo-root {
+    height: 30px;
+    min-height: 0;
+    max-height: 32px;
+  }
+
+  .footer-company-desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .partner-tag {
+    font-size: 0.78rem;
+    padding: 5px 14px;
+  }
+
+  .footer-nav-grid,
   .footer-directory-grid {
     grid-template-columns: 1fr;
-    gap: 8px;
   }
 
-  /* Mobile Collapsible Column Accordions */
   .desktop-only-title {
     display: none;
+  }
+
+  .footer-dir-col,
+  .footer-dir-col:first-child,
+  .footer-dir-col:last-child {
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid #D9DDE3;
+  }
+
+  .footer-dir-col:last-child {
+    border-bottom: none;
   }
 
   .footer-mobile-col-btn {
@@ -3815,11 +3961,10 @@ button, input, select, textarea, optgroup {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 0;
+    padding: 14px 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #E5E7EB;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: #111827;
     cursor: pointer;
@@ -3828,52 +3973,75 @@ button, input, select, textarea, optgroup {
 
   .footer-links-list {
     display: none;
-    padding: 8px 0 14px 4px;
-    border-bottom: 1px solid #E5E7EB;
+    padding: 4px 0 16px 4px;
+    gap: 10px;
   }
 
   .footer-links-list.is-expanded {
     display: flex;
   }
 
-  /* Bottom bar responsive stacking on mobile */
+  .footer-section-legal {
+    padding: 18px 0 16px;
+  }
+
+  .footer-copyright-statement {
+    font-size: 0.82rem;
+  }
+
+  .footer-legal-disclaimer {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .footer-corporate-info {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .footer-section-bottom,
   .footer-bottom-bar-wrapper {
-    padding: 18px 16px;
-    margin-top: 24px;
+    padding: 16px 0 32px;
   }
 
   .footer-bottom-bar-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
   }
 
   .footer-bottom-left {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    width: 100%;
   }
 
-  .footer-bottom-left > .footer-bar-vdivider {
+  .footer-bottom-left > .footer-bar-vdivider:first-of-type {
+    display: none;
+  }
+
+  .footer-bottom-nav .footer-bar-vdivider {
     display: none;
   }
 
   .footer-bottom-nav {
     flex-wrap: wrap;
-    gap: 8px 10px;
+    gap: 6px 14px;
   }
 
   .footer-bottom-right {
+    margin-right: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     width: 100%;
-    padding-top: 6px;
-    border-top: 1px solid #F3F4F6;
+    padding-top: 12px;
+    border-top: 1px solid #D9DDE3;
   }
 
   .footer-bottom-social-icons {
-    gap: 14px;
+    gap: 12px;
   }
 }
 
@@ -5332,12 +5500,12 @@ button, input, select, textarea, optgroup {
   /* Primary nav: Keep Residential and Commercial DIRECTLY VISIBLE on tablet */
   .header-primary-nav {
     display: flex !important;
-    align-items: center;
+    align-items: flex-end;
     gap: 6px;
     height: 100%;
     margin: 0;
-    padding: 0;
-    transform: translateY(1px);
+    padding: 0 0 13px 0;
+    box-sizing: border-box;
   }
 
   .samsung-nav-tab-btn {
@@ -5346,7 +5514,7 @@ button, input, select, textarea, optgroup {
   }
 
   .nav-tab-indicator {
-    bottom: -11px !important;
+    bottom: 0px !important;
     left: 8px !important;
     right: 8px !important;
   }
@@ -5630,8 +5798,10 @@ button, input, select, textarea, optgroup {
   .search-pill-input {
     width: 130px;
   }
+}
 
-  /* Tablet Product Slider: Proportional 3-Column Horizontal Arrangement */
+/* Tablet Product Slider (601px - 1024px): Proportional 3-Column Horizontal Arrangement */
+@media (min-width: 601px) and (max-width: 1024px) {
   .interactive-section-wrapper {
     padding: 0 16px;
     margin-bottom: 0;
@@ -5640,11 +5810,12 @@ button, input, select, textarea, optgroup {
   }
 
   .solution-slider-card {
+    --slider-panel-width: 140px;
     width: 100%;
     max-width: 760px;
-    height: 300px;
-    min-height: 300px;
-    padding: 16px 20px;
+    height: 240px;
+    min-height: 240px;
+    padding: 0;
     border-radius: 32px;
     margin: 0;
   }
@@ -5658,47 +5829,50 @@ button, input, select, textarea, optgroup {
     gap: 16px;
   }
 
-  .solution-slider-card {
-    padding: 0;
-  }
-
   .slider-card-content-area {
     display: grid;
-    grid-template-columns: 18% 66% 16%;
+    grid-template-columns: var(--slider-panel-width, 140px) 1fr var(--slider-panel-width, 140px);
     gap: 0;
     align-items: stretch;
     height: 100%;
   }
 
   .slider-left-column {
+    position: relative;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 16px 10px 12px 16px;
     height: 100%;
+    box-sizing: border-box;
   }
 
   .counter-box {
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .counter-label {
     font-family: var(--font-condensed);
-    font-size: 0.62rem;
+    font-size: clamp(0.5rem, 1.1vw, 0.58rem);
     font-weight: var(--fw-bold);
-    letter-spacing: 0.06em;
-    margin-bottom: 4px;
-    text-align: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+    text-align: left;
     white-space: nowrap;
   }
 
   .counter-number {
     font-family: var(--font-condensed);
-    font-size: clamp(2.4rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.2vw, 2.5rem);
     font-weight: var(--fw-bold);
+    text-align: center;
   }
 
   .slider-center-column {
@@ -5729,6 +5903,7 @@ button, input, select, textarea, optgroup {
   .slider-right-column {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     justify-content: center;
     align-items: center;
     padding: 8px 4px;
@@ -6444,10 +6619,11 @@ button, input, select, textarea, optgroup {
   }
 
   .solution-slider-card {
+    --slider-panel-width: 96px;
     width: 100%;
     max-width: 440px;
-    height: 180px;
-    min-height: 180px;
+    height: 144px;
+    min-height: 144px;
     padding: 0;
     border-radius: 24px;
     margin: 0;
@@ -6468,7 +6644,7 @@ button, input, select, textarea, optgroup {
 
   .slider-card-content-area {
     display: grid;
-    grid-template-columns: 18% 66% 16%;
+    grid-template-columns: var(--slider-panel-width, 96px) 1fr var(--slider-panel-width, 96px);
     gap: 0;
     height: 100%;
     width: 100%;
@@ -6490,41 +6666,46 @@ button, input, select, textarea, optgroup {
   }
 
   .slider-left-column {
+    position: relative;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 6px 2px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 10px 6px 8px 10px;
     margin: 0;
     height: 100%;
     box-sizing: border-box;
   }
 
   .counter-box {
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .counter-label {
     font-family: var(--font-condensed);
-    font-size: 0.46rem;
+    font-size: clamp(0.34rem, 1.8vw, 0.44rem);
     font-weight: var(--fw-bold);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     line-height: 1.15;
     margin-bottom: 2px;
     color: #D1D5DB;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
   }
 
   .counter-number {
     font-family: var(--font-condensed);
-    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem);
     font-weight: var(--fw-bold);
     line-height: 1;
     color: #FFFFFF;
+    text-align: center;
   }
 
   .slider-center-column {
@@ -6572,6 +6753,7 @@ button, input, select, textarea, optgroup {
   .slider-right-column {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;

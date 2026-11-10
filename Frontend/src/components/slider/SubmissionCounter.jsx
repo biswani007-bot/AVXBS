@@ -27,18 +27,20 @@ export default function SubmissionCounter({ label = 'CURRENT USER ACCESS', numbe
 
   return (
     <div className="counter-box" aria-label={`${label}: ${displayNumber}`}>
-      <span className="counter-label">{label}</span>
-      <span 
-        className={`counter-number ${isAnimating ? 'counter-number-transition' : ''}`}
-        style={{
-          display: 'inline-block',
-          transition: 'transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease',
-          transform: isAnimating ? 'scale(1.12) translateY(-2px)' : 'scale(1) translateY(0)',
-          opacity: isAnimating ? 0.75 : 1,
-        }}
-      >
-        {displayNumber}
-      </span>
+      <span className="counter-label" title={label}>{label}</span>
+      <div className="counter-number-wrapper">
+        <span 
+          className={`counter-number ${isAnimating ? 'counter-number-transition' : ''}`}
+          style={{
+            display: 'inline-block',
+            transition: 'transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease',
+            transform: isAnimating ? 'scale(1.12) translateY(-2px)' : 'scale(1) translateY(0)',
+            opacity: isAnimating ? 0.75 : 1,
+          }}
+        >
+          {displayNumber}
+        </span>
+      </div>
     </div>
   );
 }
